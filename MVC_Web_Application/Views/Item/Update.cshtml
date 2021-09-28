@@ -1,0 +1,42 @@
+﻿@model MVC_Web_Application.Models.Item 
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<div class="container-fluid">
+    <form method="post" asp-action="Update">
+        <input asp-for="Id" hidden />
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="borrower" class="form-label">Borrower Name</label>
+                <input  type="text" id="borrower" class="form-control" asp-for="Borrower">
+                <span asp-validation-for="Borrower" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+                <label for="lender" class="form-label">Lender</label>
+                <input  type="text" id="lender" class="form-control" asp-for="Lender">
+                <span asp-validation-for="Lender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="itemname" class="form-label">Item Name</label>
+                <input  type="text" id="itemname" class="form-control" asp-for="ItemName">
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+
+        </div>
+        <input class="btn btn-primary mx-1 mt-2" type="submit" asp-action="Update" asp-controller="Item" asp-route-id="@Model" value="Update" /> <a class="btn btn-danger mx-1 mt-2" asp-action="Index" asp-controller="Item">Cancel</a>
+    </form>
+
+
+</div>
+
+@section scripts{
+<partial name="_ValidationScriptsPartial.cshtml" />
+ }
+

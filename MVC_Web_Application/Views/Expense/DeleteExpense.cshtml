@@ -1,0 +1,20 @@
+﻿@model MVC_Web_Application.Models.Expense
+@{
+    ViewData["Title"] = "DeleteExpense";
+}
+
+<h1>DeleteExpense</h1>
+<form method="post" asp-action="DeleteExpense">
+    <label for="id" class="form-label text-primary">Expense ID</label>
+    <p id="id" class="text-black">@Model.ExpenseId</p>
+    <label for="expensename" class="form-label text-primary">Expense Name</label>
+    <p id="expensename" class="text-black">@Model.ExpenseName</p>
+    <label for="amount" class="form-label text-primary">Amount</label>
+    <p id="amount" class="text-black">@Model.ExpenseAmount</p>
+    <span>
+        <input type="submit" value="Delete" class="btn btn-danger" asp-action="DeleteExpense" asp-controller="Expense" asp-route-id="@Model.ExpenseId" />
+        <a class="btn btn-secondary my-1" asp-controller="Expense" asp-action="ExpenseList">Cancel</a>
+    </span>
+</form>
+
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Expense>
+@{
+    ViewData["Title"] = "ExpenseList";
+}
+
+<h1>ExpenseList</h1>
+
+<a class="btn btn-success float-end" asp-controller="Expense" asp-action="CreateExpense" >Add Expense</a>
+<div class="table-responsive-sm">
+    <table class="table table-striped table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th>Expense Id</th>
+                <th>Expense Name</th>
+                <th>Expense Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.Count() > 0)
+            { 
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td>@item.ExpenseId</td>
+                    <td>@item.ExpenseName</td>
+                    <td>@item.ExpenseAmount</td>
+                    <td>
+                        <span>
+                            <a class="btn btn-primary mx-1" asp-controller="Expense" asp-action="UpdateExpense" asp-route-id="@item.ExpenseId">Edit</a>
+                            <a class="btn btn-danger mx-1" asp-controller="Expense" asp-action="DeleteExpense" asp-route-id="@item">Delete</a>
+                        </span>
+                    </td>
+                </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="text-danger align-items-center" tabindex="9">No records found</td>
+                </tr>
+              
+            }
+        </tbody>
+    </table>  
+</div>
+

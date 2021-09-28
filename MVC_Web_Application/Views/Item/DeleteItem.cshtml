@@ -1,0 +1,26 @@
+﻿@model Item
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<div class="container-fluid">
+    <form method="post" asp-action="Delete">
+        <label for="@Model.Id" class="form-label text-primary">Id</label>
+        <p class="text-black">@Model.Id</p>
+        <label for="@Model.Borrower" class="form-label text-primary">Borrower</label>
+        <p class="text-black">@Model.Borrower</p>
+        <label for="@Model.Lender" class="form-label text-primary">Lender</label>
+        <p class="text-black">@Model.Lender</p>
+        <label for="@Model.ItemName" class="form-label text-primary">Item Name</label>
+        <p class="text-black">@Model.ItemName</p>
+        <span>
+            <input type="submit" value="Delete" class="btn btn-danger" asp-action="Delete" asp-controller="Item" asp-route-id="@Model.Id" />
+            <a class="btn btn-secondary my-1" asp-controller="Item" asp-action="Index">Cancel</a>
+        </span>
+    </form>
+   
+    
+
+</div>
+
