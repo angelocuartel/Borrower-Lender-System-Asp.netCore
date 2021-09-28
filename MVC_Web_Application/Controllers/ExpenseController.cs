@@ -42,17 +42,27 @@ namespace MVC_Web_Application.Controllers
 
 
         [HttpGet]
-        public IActionResult DeleteExpense(Expense expense)
+        public IActionResult Delete(int id)
         {
-            return View(expense);
+            using (_dbContext)
+            {
+                return View(_dbContext.Expenses.Find(id));
+            }
+           
         }
 
-        [HttpDelete]
-
+        [HttpPost]
         public IActionResult DeleteExpense(int id)
         {
-            _dbContext.Remove(_dbContext.Expenses.Find(id));
-            return RedirectToAction("ExpenseList");
+            using (_dbContext)
+            {
+                _dbContext.Remove(_dbContext.Expenses.Find(id));
+                _dbContext.SaveChanges();
+                return RedirectToAction("ExpenseList");
+            }
+
+            
+
         }
 
 

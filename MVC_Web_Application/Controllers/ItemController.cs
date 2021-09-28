@@ -45,14 +45,13 @@ namespace MVC_Web_Application.Controllers
 
 
         [HttpGet]
-        public IActionResult DeleteItem(int? id)
+        public IActionResult DeleteItem(int id)
         {
-            if(id is null)
+            using (_dbContext)
             {
-                return NotFound();
+                return View(_dbContext.Items.Find(id));
             }
 
-            return View(_dbContext.Items.Find(id));
         }
     
         [HttpPost]
