@@ -66,6 +66,30 @@ namespace MVC_Web_Application.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using (_dbContext)
+            {
+                return View (_dbContext.Expenses.Find(id));
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult Update(Expense expense)
+        {
+            using (_dbContext)
+            {
+                _dbContext.Update(expense);
+                _dbContext.SaveChanges();
+                return RedirectToAction("ExpenseList");
+            }
+        }
+
+
 
 
 
