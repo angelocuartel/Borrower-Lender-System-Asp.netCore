@@ -439,3 +439,4 @@ C:\Users\Boss\source\repos\MVC_Web_Application\MVC_Web_Application\obj\Debug\net
 C:\Users\Boss\source\repos\MVC_Web_Application\MVC_Web_Application\obj\Debug\net5.0\Razor\Views\Expense\Delete.cshtml.g.cs
 C:\Users\Boss\source\repos\MVC_Web_Application\MVC_Web_Application\obj\Debug\net5.0\Razor\Views\Expense\Update.cshtml.g.cs
 C:\Users\Boss\source\repos\MVC_Web_Application\MVC_Web_Application\obj\Debug\net5.0\Razor\Views\ExpenseCategory\CategoryList.cshtml.g.cs
+C:\Users\Boss\source\repos\MVC_Web_Application\MVC_Web_Application\obj\Debug\net5.0\Razor\Views\ExpenseCategory\AddExpenseCategory.cshtml.g.cs

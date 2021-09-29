@@ -21,5 +21,10 @@ namespace MVC_Web_Application.Controllers
                 return View(_dbContext.ExpenseCategories.ToList());
             }
         }
+
+        public IActionResult AddExpenseCategory()
+        {
+            return View();
+        }
     }
 }

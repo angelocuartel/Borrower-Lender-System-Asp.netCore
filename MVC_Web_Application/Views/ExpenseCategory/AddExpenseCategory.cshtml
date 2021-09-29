@@ -1,0 +1,21 @@
+﻿@model MVC_Web_Application.Models.ExpenseCategory
+
+@{
+    ViewData["Title"] = "AddExpenseCategory";
+}
+
+<h1>AddExpenseCategory</h1>
+
+<form method="post" asp-action="AddExpenseCategory">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="CategoryName" class="form-label">Category Name</label>
+            <input type="text" class="form-control" asp-for="CategoryName" />
+            <span class="text-danger" asp-validation-for="CategoryName"></span>
+            <span class="mt-2">
+                <button class="btn btn-primary" type="submit" asp-action="AddExpenseCategory" asp-controller="ExpenseCategory">Add</button>
+                <button class="btn btn-danger"  asp-action="CategoryList" asp-controller="ExpenseCategory">Cancel</button>
+            </span>
+        </div>
+    </div>
+</form>
