@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Web_Application.Data;
+using MVC_Web_Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace MVC_Web_Application.Controllers
         {
             _dbContext = dbContext;
         }
+
+        [HttpGet]
         public IActionResult CategoryList()
         {
             using (_dbContext)
@@ -26,5 +29,21 @@ namespace MVC_Web_Application.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddExpenseCategory(ExpenseCategory category)
+        {
+            using (_dbContext)
+            {
+                _dbContext.ExpenseCategories.Add(category);
+                _dbContext.SaveChanges();
+            }
+
+            return RedirectToAction("CategoryList");
+        }
+
+
     }
 }
