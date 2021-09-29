@@ -37,8 +37,16 @@ namespace MVC_Web_Application.Controllers
         {
             using (_dbContext)
             {
-                _dbContext.ExpenseCategories.Add(category);
-                _dbContext.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    _dbContext.ExpenseCategories.Add(category);
+                    _dbContext.SaveChanges();
+                }
+                else
+                {
+                    return View("AddExpenseCategory");
+                }
+              
             }
 
             return RedirectToAction("CategoryList");
