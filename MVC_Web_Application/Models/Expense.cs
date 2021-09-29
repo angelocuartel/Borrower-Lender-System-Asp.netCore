@@ -19,8 +19,13 @@ namespace MVC_Web_Application.Models
         [Required]
         public decimal ExpenseAmount { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; }
-        public virtual ExpenseCategory ExpenseCategory { get; set; }
+
+        [Required]
+        public int ExpenseCategoryId { get; set; }
+
+        [ForeignKey("ExpenseCategoryId")]
+
+        public ExpenseCategory ExpenseCategory { get; set; }
+
     }
 }

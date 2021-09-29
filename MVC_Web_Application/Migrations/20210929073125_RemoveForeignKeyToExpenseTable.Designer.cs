@@ -3,14 +3,16 @@ using MVC_Web_Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Web_Application.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210929073125_RemoveForeignKeyToExpenseTable")]
+    partial class RemoveForeignKeyToExpenseTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,17 +30,12 @@ namespace MVC_Web_Application.Migrations
                     b.Property<decimal>("ExpenseAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ExpenseCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ExpenseName")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("ExpenseId");
-
-                    b.HasIndex("ExpenseCategoryId");
 
                     b.ToTable("Expenses");
                 });
@@ -82,17 +79,6 @@ namespace MVC_Web_Application.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("MVC_Web_Application.Models.Expense", b =>
-                {
-                    b.HasOne("MVC_Web_Application.Models.ExpenseCategory", "ExpenseCategory")
-                        .WithMany()
-                        .HasForeignKey("ExpenseCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExpenseCategory");
                 });
 #pragma warning restore 612, 618
         }
