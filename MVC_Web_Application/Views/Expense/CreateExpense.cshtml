@@ -22,6 +22,13 @@
                 <input type="text" id="amount" class="form-control" asp-for="ExpenseAmount">
                 <span asp-validation-for="ExpenseAmount" class="text-danger"></span>
             </div>
+            <div class="col-sm-6">
+                <label for="ExpenseCategoryId" class="form-label">Choose Category</label>
+                <select asp-for="ExpenseCategoryId" asp-items="ViewBag.DropDownItems" class="form-control">
+                    <option selected>--Select Category--</option>
+                </select>
+                <span asp-validation-for="ExpenseCategoryId" class="text-danger"></span>
+            </div>
         </div>
 
         <input class="btn btn-success mx-1 mt-2" type="submit" asp-action="CreateExpense" asp-controller="Expense" asp-route-id="@Model" value="Add" /> <a class="btn btn-danger mx-1 mt-2" asp-action="ExpenseList" asp-controller="Expense">Cancel</a>

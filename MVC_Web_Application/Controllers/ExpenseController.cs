@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Web_Application.Data;
 using MVC_Web_Application.Models;
@@ -24,8 +25,14 @@ namespace MVC_Web_Application.Controllers
             return  View(_dbContext.Expenses.ToList());
         }
 
-        public IActionResult CreateExpense()
+        public  IActionResult CreateExpense()
         {
+            ViewBag.DropDownItems =  _dbContext.ExpenseCategories.Select(i => new SelectListItem
+            {
+               Text = i.CategoryName,
+               Value = i.CategoryId.ToString()
+            });
+            
             return View();
         }
 
