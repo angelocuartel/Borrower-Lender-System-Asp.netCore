@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Web_Application.Data;
 using MVC_Web_Application.Models;
+using MVC_Web_Application.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,19 @@ namespace MVC_Web_Application.Controllers
 
         public  IActionResult CreateExpense()
         {
-            ViewBag.DropDownItems =  _dbContext.ExpenseCategories.Select(i => new SelectListItem
+            var expense = new ExpenseVM()
             {
-               Text = i.CategoryName,
-               Value = i.CategoryId.ToString()
-            });
+                expense = new Expense(),
+                DropDownItems = _dbContext.ExpenseCategories.Select(d => new SelectListItem()
+                {
+                    Text = d.CategoryName,
+                    Value = d.CategoryId.ToString()
+                })
+            };
+
+       
             
-            return View();
+            return View(expense);
         }
 
         [HttpPost]
