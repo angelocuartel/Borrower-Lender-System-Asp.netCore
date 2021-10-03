@@ -23,7 +23,18 @@ namespace MVC_Web_Application.Controllers
         [HttpGet]
         public  IActionResult ExpenseList()
         {
-            return  View(_dbContext.Expenses.ToList());
+            using (_dbContext)
+            {
+                var expenseList = _dbContext.Expenses.ToList();
+
+                foreach (var item in expenseList)
+                {
+                    item.ExpenseCategory = _dbContext.ExpenseCategories
+                        .FirstOrDefault(x => x.CategoryId == item.ExpenseCategoryId);
+                }
+                return View(_dbContext.Expenses.ToList());
+            }
+          
         }
 
         public  IActionResult CreateExpense()

@@ -11,6 +11,7 @@ namespace MVC_Web_Application.Controllers
     public class ExpenseCategoryController : Controller
     {
         private readonly AppDbContext _dbContext;
+
         public ExpenseCategoryController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -21,6 +22,7 @@ namespace MVC_Web_Application.Controllers
         {
             using (_dbContext)
             {
+                
                 return View(_dbContext.ExpenseCategories.ToList());
             }
         }
