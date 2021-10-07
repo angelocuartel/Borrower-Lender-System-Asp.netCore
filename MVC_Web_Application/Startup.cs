@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVC_Web_Application.Data;
+using MVC_Web_Application.Interface;
 using MVC_Web_Application.Models;
+using MVC_Web_Application.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +37,12 @@ namespace MVC_Web_Application
                 Configuration.GetConnectionString("DefaultConnection")
             ));
 
+
             services.AddControllersWithViews();
+
+            // Services
+
+            services.AddScoped<IDbService<string>,PersonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

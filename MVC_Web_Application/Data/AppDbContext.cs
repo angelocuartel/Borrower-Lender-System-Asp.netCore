@@ -18,6 +18,11 @@ namespace MVC_Web_Application.Data
 
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
+        }
+
 
         public DbSet<Item> Items { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategories { get; set; }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Web_Application.Data;
+using MVC_Web_Application.Interface;
 using MVC_Web_Application.Models;
 using MVC_Web_Application.Models.ViewModels;
 using System;
@@ -14,10 +15,14 @@ namespace MVC_Web_Application.Controllers
     public class ExpenseController : Controller
     {
         private readonly AppDbContext _dbContext;
-        public ExpenseController(AppDbContext dbContext)
+
+        private readonly IDbService<string> _person;
+        public ExpenseController(AppDbContext dbContext, IDbService<string> person)
         {
             _dbContext = dbContext;
+            _person = person;
         }
+
 
 
         [HttpGet]
@@ -57,9 +62,9 @@ namespace MVC_Web_Application.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult CreateExpense(Expense newExpense)
+        public IActionResult CreateExpense(ExpenseVM newExpense)
         {
-            _dbContext.Expenses.Add(newExpense);
+            _dbContext.Expenses.Add(newExpense.expense);
             _dbContext.SaveChanges();
 
             return RedirectToAction("ExpenseList");
